@@ -1,4 +1,4 @@
-#241122 강의 내용 정리
+# 241122 강의 내용 정리
 
 ## map에 있는 객체들 전체 조회(map에 있는 값들 전체 json으로 전송)
 - map에 저장된 데이터를 순회하면서 json 객체로 변환한 다음 클라이언트에 json으로 response한다.
@@ -22,6 +22,7 @@ map.forEach(function(a, b, c) {
 a : seven, b : 7, c : [object Map]
 a : nine, b : 9, c : [object Map]
 a : eight, b : 8, c : [object Map]
+```
 
 ## map
 - 형태 : array.map(function(value, key, object) { ... })
@@ -72,12 +73,13 @@ app.delete('/youtubers/:id', function(req, res) {
 
 ## HTTP PUT을 이용하여 객체를 수정해보기
 <API 설계>
+
 5) 개별 유튜버 수정 => PUT /youtubers/:id
 - req : params.id, body <= channelTitle
 - res : "(이전)channelTitle님, 채널명이 (새로운)channelTitle로 변경되었습니다."
-'''
-// 예시 코드
+
 ```
+// 예시 코드
 app.put('/youtubers/:id', function(req, res) {
     let {id} = req.params
     id = parseInt(id)
@@ -107,4 +109,4 @@ app.put('/youtubers/:id', function(req, res) {
 - 조회/수정/삭제 성공 : 200
 - 등록 성공 : 201
 - 찾는 페이지 없음(url에 맞는 api 없음) : 404
-- 서버가 죽었을 때(서버가 크리티컬한 오류를 맞았을 때) : 500
+- 서버가 죽었을 때(서버가 크리티컬한 오류를 맞았을 때): 500

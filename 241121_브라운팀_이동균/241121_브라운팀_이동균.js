@@ -41,7 +41,8 @@ app.post('/food', function (req, res) {
 
 // 개별 음식 조회
 app.get('/food/:id', function (req, res) {
-    const id = Number(req.params.id);
+    let {id} = req.params
+    id = parseInt(id)
 
     if (db.get(id)) {
         res.json(db.get(id));
