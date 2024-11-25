@@ -1,3 +1,26 @@
+## 설계
+### 회원
+1) 로그인 POST /login
+- req : body (id, pwd)
+- res : `${name}님 환영합니다`
+
+2) 회원가입 POST /join
+- req : body (id, pwd, name)
+- res : `${name}님 환영합니다`
+
+3) 회원 정보 조회 GET /users/:id
+- req : URL(id)
+- res : id, name
+
+4) 회원 탈퇴 DELETE /users/:id
+- req : URL(id)
+- res : `${name}님 다음에 또 뵙겠습니다.`
+
+### 채널
+- 채널 생성
+- 채널 수정
+- 채널 삭제
+
 ## 코드
 ```
 const express = require('express')
