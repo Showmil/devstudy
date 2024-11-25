@@ -1,3 +1,5 @@
+## 코드
+```
 const express = require('express')
 const app = express()
 app.listen(7777)
@@ -61,3 +63,21 @@ app
         })
     }
 })
+```
+
+## 실행 결과
+### 회원 가입 API
+![](https://velog.velcdn.com/images/hilyhily334/post/04da6d33-da4e-4375-8077-49dee7bfc309/image.png)
+- 회원가입이 정상적으로 되었을 때
+![](https://velog.velcdn.com/images/hilyhily334/post/f0610d5a-1f8d-4c1c-a8b0-05b6a4bb7a2d/image.png)
+- body 값이 비워져서 왔을 때
+### 회원 개별 조회 API
+![](https://velog.velcdn.com/images/hilyhily334/post/1be0fc98-71e5-4fac-96b3-08944d83c45c/image.png)
+- 회원 정보가 정상적으로 될 때
+![](https://velog.velcdn.com/images/hilyhily334/post/a33d4c8b-0a95-4b4a-b6fe-26c61e90a2a0/image.png)
+- 없는 회원 정보를 조회할 때
+### 회원 개별 탈퇴 API
+![](https://velog.velcdn.com/images/hilyhily334/post/cb6b0563-2e1a-41b8-a0f2-827435b2c2e6/image.png)
+- 정상적으로 탈퇴가 되었을 때
+![](https://velog.velcdn.com/images/hilyhily334/post/ece3e416-ee1b-46e4-abbf-9ead9df38d16/image.png)
+-  ID에 맞는 회원 정보가 없을 때
