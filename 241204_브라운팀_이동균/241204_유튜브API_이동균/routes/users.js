@@ -3,6 +3,13 @@ const router = express.Router() // app.js에서 사용할 수 있게 모듈화
 const { body, param, validationResult } = require('express-validator')
 const conn = require('../mariadb')
 
+// jwt 모듈
+var jwt = require('jsonwebtoken');
+
+// env 모듈
+var dotenv = require('dotenv');
+dotenv.config();
+
 router.use(express.json())
 
 const validate = (req, res, next) => {
@@ -37,11 +44,26 @@ router.post('/login',
             var loginUser = results[0];
 
             if (loginUser && loginUser.passowrd == password) {
+                // token 발급
+                const token = jwt.sign({
+                    email: loginUser.email,
+                    name : loginUser.name
+                }, process.env.PRIVATE_KEY, {
+                    expiresIn: '5m', // 5분 뒤에 만료된다는 뜻
+                    issuer: 'showmil'
+                })
+
+                res.cookie("token", token, {
+                    httpOnly: true, // JavaScripts로 쿠키 접근 방지
+                    secure: true, // HTTPS에서만 쿠키 전송
+                    maxAge: 60 * 60 * 1000, // 쿠키 유효 시간
+                });
+
                 res.status(200).json({
                     message: `${loginUser.name}님, 로그인 되었습니다.`
                 })
             } else {
-                res.status(404).json({
+                res.status(403).json({
                     message : "이메일 또는 비밀번호가 틀렸습니다."
                 })
             }
